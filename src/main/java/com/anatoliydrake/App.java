@@ -7,11 +7,13 @@ public class App {
             FileProcessor processor = new FileProcessor(options);
             processor.process();
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Error: " + e.getMessage());
+            System.err.println("Usage: file-filter [options] <input-files>");
+            System.err.println("Options: -o <path> -p <prefix> -a -s -f");
             System.exit(1);
         } catch (Exception e) {
             System.err.println("Unexpected error: " + e.getMessage());
-            System.exit(1);
+            e.printStackTrace(System.err);
         }
     }
 }
